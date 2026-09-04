@@ -1,0 +1,59 @@
+name: Validate Repository Structure
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  validate-structure:
+    runs-on: ubuntu-latest
+    name: Check required Part 1 files exist
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Check /docs folder exists
+        run: |
+          if [ ! -d "docs" ]; then
+            echo "::error::Missing required '/docs' folder."
+            exit 1
+          fi
+          echo "docs folder found."
+
+      - name: Check ERD file exists
+        run: |
+          if ! ls docs/*ERD*.png >/dev/null 2>&1 && ! ls docs/*ERD*.pdf >/dev/null 2>&1; then
+            echo "::error::Missing ERD file (expected a .png or .pdf containing 'ERD' in /docs)."
+            exit 1
+          fi
+          echo "ERD file found."
+
+      - name: Check API Endpoint Plan exists
+        run: |
+          if ! ls docs/*Endpoint*Plan*.md >/dev/null 2>&1 && ! ls docs/*Endpoint*Plan*.pdf >/dev/null 2>&1; then
+            echo "::error::Missing API Endpoint Plan file (expected .md or .pdf containing 'Endpoint_Plan' in /docs)."
+            exit 1
+          fi
+          echo "API Endpoint Plan found."
+
+      - name: Check SQL script exists
+        run: |
+          if ! ls docs/*.sql >/dev/null 2>&1; then
+            echo "::error::Missing SQL database script (.sql file) in /docs."
+            exit 1
+          fi
+          echo "SQL script found."
+
+      - name: Check README exists
+        run: |
+          if [ ! -f "README.md" ]; then
+            echo "::error::Missing README.md in repository root."
+            exit 1
+          fi
+          echo "README.md found."
+
+      - name: All required Part 1 files present
+        run: echo "Repository structure validated successfully."
