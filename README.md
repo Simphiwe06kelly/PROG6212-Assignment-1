@@ -71,7 +71,7 @@ A GitHub Actions workflow (`.github/workflows/ci.yml`) validates that the `/docs
 
 ## Video walkthrough
 
-Part 1: [Unlisted YouTube link] *(paste your video link here)*
+Part 1: [Unlisted YouTube link] https://youtu.be/8PhUUhY5bns
 
 ## AI assistance disclosure
 
