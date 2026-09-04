@@ -4,7 +4,7 @@ RaceDay is a full-stack, cloud-aware event management system built for the South
 
 This repository is a Portfolio of Evidence (POE) built progressively across three parts for the PROG6212 module:
 
-- **Part 1** — System planning: Entity Relationship Diagram, API endpoint plan, and SQL database script.
+- **Part 1** — System planning: Entity Relationship Diagram, API endpoint plan, and SQL database script. (done)
 - **Part 2** — A RESTful API built in C#, connected to the database, with unit tests and GitHub Actions CI/CD. *(Not yet built.)*
 - **Part 3** — An MVC web application that consumes the API, integrates Azure Blob Storage, and is containerised with Docker. *(Not yet built.)*
 
